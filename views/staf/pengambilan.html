@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+	<meta name="robots" content="" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Inventaris Lintas Internasional Berkarya" />
+	<meta property="og:title" content="Inventaris Lintas Internasional Berkarya" />
+	<meta property="og:description" content="Inventaris Lintas Internasional Berkarya" />
+	<meta property="og:image" content="https://dompet.dexignlab.com/xhtml/social-image.png" />
+	<meta name="format-detection" content="telephone=no">
+	
+	<!-- PAGE TITLE HERE -->
+	<title>Inventaris Lintas Internasional Berkarya</title>
+	
+	<!-- FAVICONS ICON -->
+	<link rel="shortcut icon" type="image/png" href="/assets/favicon_logo.png" />
+    <!-- Datatable -->
+    <link href="/./vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+	<link href="/./vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
+    <link href="/./css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!-- NAVBAR -->
+		<div class="nav-header">
+            <a href="index.html" class="brand-logo">
+				<img class="logo-abbr" src="/assets/logo_gambar.png" alt="Logo Abbreviation" width="53" height="53">
+				<img class="brand-title" src="/assets/logo_tulisan.png" alt="Brand Title" width="124" height="53">
+			</a>
+			
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </div>
+            </div>
+        </div>
+
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="header">
+            <div class="header-content">
+                <nav class="navbar navbar-expand">
+                    <div class="collapse navbar-collapse justify-content-between">
+                        <div class="header-left">
+							<div class="dashboard_bar">
+                                Data Pengambilan 
+                            </div>
+                        </div>
+                        <ul class="navbar-nav header-right">
+                            <li class="nav-item">
+								<button type="button" class="btn btn-primary d-sm-inline-block d-none" id="btnTambahData">
+                                    Tambah Pengambilan <i class="fa fa-plus ms-3 scale4"></i>
+                                </button>
+							</li>
+                        </ul>
+                    </div>
+				</nav>
+			</div>
+		</div>
+
+        <!-- SIDEBAR -->
+        <div class="dlabnav">
+            <div class="dlabnav-scroll">
+				<ul class="metismenu" id="menu">
+					<li class="dropdown header-profile">
+						<a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
+							<img src="/assets/user.png" width="20" alt=""/>
+							<div class="header-info ms-3">
+								<span class="font-w600 "><b>Staf Gudang</b></span>
+								<small class="text-end font-w400">stafgudang@gmail.com</small>
+							</div>
+						</a>
+						<div class="dropdown-menu dropdown-menu-end">
+                            <div class="dropdown-item d-flex align-items-center">
+                                <i class="fa fa-user-circle fa-sm text-primary"></i>
+                                <span class="ms-3">Staf Gudang</span>
+                            </div>
+                            <div class="dropdown-item d-flex align-items-center">
+                                <i class="fa fa-envelope fa-sm text-primary"></i>
+                                <span class="ms-3">stafgudang@gmail.com</span>
+                            </div>
+                            <div class="dropdown-item d-flex align-items-center">
+                                <i class="fa fa-money fa-sm text-primary"></i>                             
+                                <span class="ms-3">
+                                    <span class="text-black">Rp 10.000.000</span> / Rp 20.000.000
+                                </span>                                 
+                            </div>
+                            <div class="dropdown-item align-items-center">
+                            <a href="/login.html" class="btn btn-danger btn-xs">
+                                <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-white" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                    <polyline points="16 17 21 12 16 7"></polyline>
+                                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                                </svg>
+                                <span class="ms-2 fs-6 text-white">Keluar</span>
+                            </a>  
+                            </div>     
+                        </div>
+					</li>
+                    <li><a href="index.html" class="ai-icon" aria-expanded="false">
+							<i class="flaticon-025-dashboard"></i>
+							<span class="nav-text">Halaman Utama</span>
+						</a>
+                    </li>
+					<li><a href="daftar_barang.html" class="ai-icon" aria-expanded="false">
+							<i class="flaticon-022-copy"></i>
+							<span class="nav-text">Daftar Barang</span>
+						</a>
+					</li>
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+							<i class="flaticon-072-printer"></i>
+							<span class="nav-text">Formulir</span>
+						</a>
+                        <ul aria-expanded="false">
+                            <li><a href="./pengambilan.html">Pengambilan Barang</a></li>
+                            <li><a href="./pengadaan.html">Pengadaan Barang</a></li>
+                        </ul>
+                    </li>
+                </ul>
+			</div>
+        </div>
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="row">
+					<div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="example4" class="display" style="min-width: 845px">
+                                        <thead>
+                                            <tr>
+                                                <th>Tujuan</th>
+                                                <th>Nama Barang</th>
+                                                <th>Deskripsi</th>
+                                                <th>Status </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Operasional Pelabuhan</td>
+                                                <td>Radio HT</td>
+                                                <td>Untuk komunikasi antar petugas</td>
+                                                <td><span class="badge light badge-success">Disetujui</span></td>
+                                            </tr>
+                                            <tr>
+												<td>Administrasi Kantor</td>
+                                                <td>Printer LaserJet</td>
+                                                <td>Untuk pencetakan dokumen kantor</td>
+                                                <td><span class="badge light badge-warning">Menunggu</span></td>
+                                            </tr>
+                                            <tr>
+												<td>Keselamatan Kerja (K3)</td>
+                                                <td>Helm Safety</td>
+                                                <td>Untuk perlindungan pekerja lapangan</td>
+                                                <td><span class="badge light badge-danger">Ditolak</span></td>
+                                            </tr>
+                                            <tr>
+												<td>Keamanan Pelabuhan</td>
+                                                <td>Rompi Safety</td>
+												<td>Untuk petugas Keamanan</td>
+                                                <td><span class="badge light badge-warning">Menunggu</span></td>
+                                            </tr>
+                                            <tr>
+												<td>Tim Logistik</td>
+                                                <td>Barcode Scanner</td>
+												<td>Untuk identifikasi barang di gudang</td>
+                                                <td><span class="badge light badge-warning">Menunggu</span></td>
+                                            </tr>
+                                            <tr>
+												<td>Teknisi & Perawatan</td>
+                                                <td>Kunci Inggris</td>
+												<td>Ukuran 24 mm</td>
+                                                <td><span class="badge light badge-success">Disetujui</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Tambah Data -->
+    <div class="modal fade" id="modalPengambilanBarang" tabindex="-1" aria-labelledby="modalPengambilanBarangLabel" aria-hidden="true">
+		<div class="modal-dialog  modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modalPengambilanBarangLabel">Formulir Pengambilan Barang</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form id="formPengambilanBarang">
+						<div class="mb-3 d-flex justify-content-between">
+							<div class="w-50 me-2">
+								<label for="noSurat" class="form-label">No. Surat</label>
+								<input type="text" class="form-control" id="noSurat" required>
+							</div>
+							<div class="w-50">
+								<label for="tanggalDiperlukan" class="form-label">Tanggal diperlukan</label>
+								<input type="date" class="form-control" id="tanggalDiperlukan" required>
+							</div>
+						</div>
+						<div class="mb-3">
+							<label for="tujuan" class="form-label">Tujuan</label>
+							<textarea class="form-control" id="tujuan" rows="2" required></textarea>
+						</div>
+						<div class="mb-3">
+							<label for="namaBarang" class="form-label">Nama Barang</label>
+							<input type="text" class="form-control" id="namaBarang" required>
+						</div>
+                        <div class="mb-3 d-flex justify-content-between">
+							<div class="w-50 me-2">
+								<label for="anggaran" class="form-label">Perkiraan Anggaran</label>
+								<input type="number" class="form-control" id="anggaran" required>
+							</div>
+							<div class="w-50">
+								<label for="jumlah" class="form-label">Jumlah</label>
+								<input type="number" class="form-control" id="jumlah" required>
+							</div>
+						</div>
+						<div class="mb-3">
+							<label for="deskripsi" class="form-label">Deskripsi</label>
+							<textarea class="form-control" id="deskripsi" rows="3"></textarea>
+						</div>
+						<div class="text-end">
+							<button type="submit" class="btn btn-primary">Simpan</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+    </div>
+  
+    <!-- Script untuk membuka modal -->
+	<script>
+	document.addEventListener("DOMContentLoaded", function() {
+		document.getElementById("btnTambahData").addEventListener("click", function() {
+			var modal = new bootstrap.Modal(document.getElementById("modalPengambilanBarang"));
+			modal.show();
+		});
+	});
+	</script>
+		
+  
+    <!-- Required vendors -->
+    <script src="/./vendor/global/global.min.js"></script>
+    <script src="/./vendor/chart.js/Chart.bundle.min.js"></script>
+	<!-- Apex Chart -->
+	<script src="/./vendor/apexchart/apexchart.js"></script>
+	
+    <!-- Datatable -->
+    <script src="/./vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/./js/plugins-init/datatables.init.js"></script>
+
+	<script src="/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+
+    <script src="/./js/custom.min.js"></script>
+	<script src="/./js/dlabnav-init.js"></script>
+	
+    
+</body>
+</html>
