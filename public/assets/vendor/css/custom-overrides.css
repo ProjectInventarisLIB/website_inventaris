@@ -1,0 +1,14 @@
+#addProductModal table.table-bordered,
+#addProductModal table.table-bordered th,
+#addProductModal table.table-bordered td {
+    border: 1px solid #dee2e6 !important;
+}
+
+#addProductModal table.table {
+    border-collapse: collapse !important;
+}
+
+#addProductModal table.table-bordered th,
+#addProductModal table.table-bordered td {
+    text-align: center !important;
+}
