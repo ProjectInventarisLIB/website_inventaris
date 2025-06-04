@@ -12,6 +12,7 @@
   --bs-purple: #7367f0;
   --bs-pink: #e83e8c;
   --bs-red: #ff4c51;
+  --bs-maroon: #800000;
   --bs-orange: #fd7e14;
   --bs-yellow: #ff9f43;
   --bs-green: #28c76f;
@@ -33,7 +34,7 @@
   --bs-gray-700: #6d6b77;
   --bs-gray-800: #595564;
   --bs-gray-900: #444050;
-  --bs-primary: #7367f0;
+  --bs-primary: #0067A2;
   --bs-secondary: #808390;
   --bs-success: #28c76f;
   --bs-info: #00bad1;
@@ -42,8 +43,9 @@
   --bs-light: #dfdfe3;
   --bs-dark: #2f3349;
   --bs-gray: #97959e;
-  --bs-primary-rgb: 115, 103, 240;
+  --bs-primary-rgb: 66, 180, 240;
   --bs-secondary-rgb: 128, 131, 144;
+  --bs-maroon-rgb: 128, 0, 0;
   --bs-success-rgb: 40, 199, 111;
   --bs-info-rgb: 0, 186, 209;
   --bs-warning-rgb: 255, 159, 67;
@@ -14030,6 +14032,12 @@ li:not(:first-child) .dropdown-item, .dropdown-menu .dropdown-item:not(:first-ch
 
 .progress-bar.bg-secondary {
   --bs-progress-bar-shadow-color: rgba(var(--bs-secondary-rgb), .3);
+}
+
+.progress .progress-bar.bg-maroon {
+  background-color: var(--bs-maroon);
+  box-shadow: 0 2px 4px 0 var(--bs-progress-bar-shadow-color);
+  color: var(--bs-white);
 }
 
 .progress-bar.bg-success {

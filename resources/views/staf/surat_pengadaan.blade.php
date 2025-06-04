@@ -13,8 +13,8 @@
                 <p class="mb-0">Surat Diproses</p>
               </div>
               <span class="avatar me-sm-6">
-                <span class="avatar-initial bg-label-secondary rounded text-heading">
-                  <i class="icon-base ti tabler-calendar-stats icon-26px text-heading"></i>
+                <span class="avatar-initial rounded bg-label-warning">
+                  <i class="icon-base ti tabler-calendar-stats icon-26px"></i>
                 </span>
               </span>
             </div>
@@ -28,9 +28,9 @@
                 <p class="mb-0">Surat Disetujui</p>
               </div>
               <span class="avatar p-2 me-lg-6">
-                <span class="avatar-initial bg-label-secondary rounded"
-                  ><i class="icon-base ti tabler-checks icon-26px text-heading"></i
-                ></span>
+                <span class="avatar-initial rounded bg-label-success">
+                  <i class="icon-base ti tabler-checks icon-26px"></i>
+                </span>
               </span>
             </div>
             <hr class="d-none d-sm-block d-lg-none" />
@@ -42,9 +42,9 @@
                 <p class="mb-0">Surat Ditolak</p>
               </div>
               <span class="avatar p-2">
-                <span class="avatar-initial bg-label-secondary rounded"
-                  ><i class="icon-base ti tabler-alert-octagon icon-26px text-heading"></i
-                ></span>
+                <span class="avatar-initial rounded bg-label-danger">
+                  <i class="icon-base ti tabler-alert-octagon icon-26px"></i>
+                </span>
               </span>
             </div>
           </div>
@@ -56,9 +56,9 @@
                 <p class="mb-0">Surat Selesai</p>
               </div>
               <span class="avatar p-2 me-sm-6">
-                <span class="avatar-initial bg-label-secondary rounded"
-                  ><i class="icon-base ti tabler-wallet icon-26px text-heading"></i
-                ></span>
+                <span class="avatar-initial rounded bg-label-primary">
+                  <i class="icon-base ti tabler-file icon-26px"></i>
+                </span>
               </span>
             </div>
           </div>
@@ -267,6 +267,15 @@
             ],
             columnDefs: [
         {
+        targets: 2,
+        render: function(data, type, row) {
+            if(type === 'display' || type === 'filter') {
+            return 'Rp ' + Number(data).toLocaleString('id-ID');
+            }
+            return data;
+        }
+        },
+        {
             targets: 5,
             render: function (data, type, full, meta) {
                 const statusClass = {
@@ -291,7 +300,7 @@
             style: 'multi',
             selector: 'td:nth-child(2)'
         },
-        order: [2, 'asc'],
+        order: [0, 'asc'],
         displayLength: 7,
         layout: {
             topStart: {
@@ -325,13 +334,13 @@
                         text: `<span class="d-flex align-items-center"><i class="icon-base ti tabler-printer me-1"></i>Print</span>`,
                         className: 'dropdown-item',
                         exportOptions: {
-                            columns: [3, 4, 5, 6, 7],
+                            columns: [0,1,2,3,4,5],
                             format: {
                             body: function (inner, coldex, rowdex) {
                                 if (inner.length <= 0) return inner;
 
                                 // Check if inner is HTML content
-                                if (inner.indexOf('<') > -1) {
+                                if (typeof inner === 'string' && inner.indexOf('<') > -1) {
                                 const parser = new DOMParser();
                                 const doc = parser.parseFromString(inner, 'text/html');
 
@@ -373,11 +382,11 @@
                         }
                         },
                         {
-                        extend: 'pdf',
-                        text: `<span class="d-flex align-items-center"><i class="icon-base ti tabler-file-text me-1"></i>Pdf</span>`,
+                        extend: 'csv',
+                        text: `<span class="d-flex align-items-center"><i class="icon-base ti tabler-file-text me-1"></i>Csv</span>`,
                         className: 'dropdown-item',
                         exportOptions: {
-                            columns: [3, 4, 5, 6, 7],
+                            columns: [0,1,2,3,4,5],
                             format: {
                             body: function (inner, coldex, rowdex) {
                                 if (inner.length <= 0) return inner;
@@ -388,8 +397,8 @@
 
                                 let text = '';
 
-                                // Handle product-name elements specifically
-                                const userNameElements = doc.querySelectorAll('.product-name');
+                                // Handle user-name elements specifically
+                                const userNameElements = doc.querySelectorAll('.user-name');
                                 if (userNameElements.length > 0) {
                                 userNameElements.forEach(el => {
                                     // Get text from nested structure - try different selectors
@@ -408,11 +417,43 @@
                             }
                             }
                         }
+                        },
+                        {
+                        extend: 'excel',
+                        text: `<span class="d-flex align-items-center"><i class="icon-base ti tabler-upload me-1"></i>Excel</span>`,
+                        className: 'dropdown-item',
+                        exportOptions: {
+                            columns: [0,1,2,3,4,5],
+                            format: {
+                            body: function (inner, coldex, rowdex) {
+                                if (inner.length <= 0) return inner;
+
+                                const parser = new DOMParser();
+                                const doc = parser.parseFromString(inner, 'text/html');
+
+                                let text = '';
+                                const userNameElements = doc.querySelectorAll('.product-name');
+                                if (userNameElements.length > 0) {
+                                userNameElements.forEach(el => {
+                                    const nameText =
+                                    el.querySelector('.fw-medium')?.textContent ||
+                                    el.querySelector('.d-block')?.textContent ||
+                                    el.textContent;
+                                    text += nameText.trim() + ' ';
+                                });
+                                } else {
+                                text = doc.body.textContent || doc.body.innerText;
+                                }
+
+                                return text.trim();
+                            }
+                            }
+                        }
                         }
                     ]
                     },
                     {
-                    text: '<i class="icon-base ti tabler-plus me-0 me-sm-1 icon-16px"></i><span class="d-none d-sm-inline-block">Tambah Surat</span>',
+                    text: '<span class="d-flex align-items-center gap-2"><i class="icon-base ti tabler-plus icon-sm"></i> <span class="d-none d-sm-inline-block">Tambah Data</span></span>',
                     className: 'add-new btn btn-primary',
                     action: function () {
                         $('#addProductModal').modal('show');
@@ -590,17 +631,38 @@
         },
         body: formData
     })
-    .then(response => response.json())
-        .then(result => {
-            alert("Data berhasil disimpan!");
-            window.location.href = window.location.href;
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert("Gagal menyimpan data.");
-        });
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(err => {
+                const error = new Error(err.error || 'Terjadi kesalahan');
+                error.status = response.status;
+                throw error;
+            });
+        }
+        return response.json();
+    })
+    .then(result => {
+        Notiflix.Report.success(
+            'Data berhasil disimpan!',
+            'Data kamu sekarang sudah tercatat di sistem. <br/><br/>Silahkan cek kembali!',
+            'Oke',
+            function () {
+                window.location.reload();
+            }
+        );
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        Notiflix.Report.failure(
+            'Gagal menyimpan data.',
+            `Ups! Terjadi kesalahan saat menyimpan data <br/><br/>Error: ${error.message || error}`,
+            'Oke'
+        );
     });
+});
+
 
 </script>
+
 
 @endsection

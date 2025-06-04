@@ -92,7 +92,9 @@
                         name: 'gambar',
                         render: function (data, type, row) {
                             let imageUrl = data ? `/storage/gambar/${data}` : '{{ asset("assets/img/default_barang.jpg") }}';
-                            return `<img src="${imageUrl}" alt="Barang" width="60">`;
+                            return `<a href="${imageUrl}" target="_blank">
+                                        <img src="${imageUrl}" alt="Barang" width="60">
+                                    </a>`;
                         }
                     },
                     { data: 'ID_barang', name: 'ID_barang' },
@@ -100,7 +102,16 @@
                     { data: 'deskripsi', name: 'deskripsi' },
                     { data: 'jumlah', name: 'jumlah' },
                     { data: 'satuan', name: 'satuan' },
-                    { data: 'harga', name: 'harga' },
+                    {
+                        data: 'harga',
+                        name: 'harga',
+                        render: function(data, type, row) {
+                            if(type === 'display' || type === 'filter') {
+                            return 'Rp ' + Number(data).toLocaleString('id-ID');
+                            }
+                            return data;
+                        }
+                    },
                     {
                         data: 'created_at',
                         name: 'created_at',
@@ -110,6 +121,11 @@
                         }
                     }
                 ],
+                createdRow: function (row, data, dataIndex) {
+                    if (data.jumlah <= 5) {
+                        row.classList.add('table-danger');
+                    }
+                },
                 orderCellsTop: true,
                 layout: {
                     topStart: {
@@ -146,7 +162,5 @@
         }
     });
 </script>
-
-
 
 @endsection

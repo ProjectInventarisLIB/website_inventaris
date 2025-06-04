@@ -23,7 +23,7 @@ class PengadaanMendesakMail extends Mailable
     public function build()
     {
         $email = $this->subject('Pengajuan Pengadaan Mendesak')
-                      ->view('staf.emails.email_pengadaan_mendesak');
+                      ->view('staf.details.email_pengadaan_mendesak');
 
         if ($this->pengadaan->lampiran) {
             $folder = 'foto_pengadaan_mendesak/PENGADAAN' . $this->pengadaan->ID_pengadaan_mendesak;

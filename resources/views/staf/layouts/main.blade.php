@@ -51,7 +51,8 @@
     <!-- Page CSS -->
     <link rel="stylesheet" href="../../assets/vendor/css/pages/cards-advance.css" />
 
-
+    <!-- Notiflix CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notiflix@3.2.8/src/notiflix.min.css">
 
     <link rel="stylesheet" href="../../assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
     <link rel="stylesheet" href="../../assets/vendor/libs/flatpickr/flatpickr.css" />
@@ -145,6 +146,7 @@
     <script src="../../assets/vendor/libs/@form-validation/popular.js"></script>
     <script src="../../assets/vendor/libs/@form-validation/bootstrap5.js"></script>
     <script src="../../assets/vendor/libs/@form-validation/auto-focus.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/notiflix@3.2.8/dist/notiflix-aio-3.2.8.min.js"></script>
     <!-- Select 2 -->
     @stack('scripts')
 
