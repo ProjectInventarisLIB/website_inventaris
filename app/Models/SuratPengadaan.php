@@ -17,4 +17,9 @@ class SuratPengadaan extends Model
     {
         return $this->hasMany(DetailSuratPengadaan::class, 'ID_pengadaan', 'ID_pengadaan');
     }
+
+    public function staf()
+{
+    return $this->belongsTo(User::class, 'ID_Staf', 'id');
+}
 }

@@ -11,6 +11,10 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Codedge\Fpdf\Facades\Fpdf;
 
+use Endroid\QrCode\Builder\Builder;
+use Endroid\QrCode\Writer\PngWriter;
+use Illuminate\Support\Facades\Storage;
+
 class SuratPengadaanController extends Controller
 {
     public function view()
@@ -61,11 +65,13 @@ class SuratPengadaanController extends Controller
         $noSurat = $this->generateNoSurat();
         $idPengadaan = $this->generateIdPengadaan();
 
+        $userId = Auth::id();
+
         $statusCounts = [
-            'Diproses' => SuratPengadaan::where('status', 'Diproses')->count(),
-            'Disetujui' => SuratPengadaan::where('status', 'Disetujui')->count(),
-            'Selesai'  => SuratPengadaan::where('status', 'Selesai')->count(),
-            'Ditolak'  => SuratPengadaan::where('status', 'Ditolak')->count(),
+            'Diproses' => SuratPengadaan::where('ID_Staf', $userId)->where('status', 'Diproses')->count(),
+            'Disetujui' => SuratPengadaan::where('ID_Staf', $userId)->where('status', 'Disetujui')->count(),
+            'Selesai'  => SuratPengadaan::where('ID_Staf', $userId)->where('status', 'Selesai')->count(),
+            'Ditolak'  => SuratPengadaan::where('ID_Staf', $userId)->where('status', 'Ditolak')->count(),
         ];
 
         return view('staf.surat_pengadaan', compact('noSurat', 'idPengadaan', 'statusCounts'));
@@ -155,7 +161,8 @@ class SuratPengadaanController extends Controller
 
     public function show(Request $request)
     {
-        $data = SuratPengadaan::with('details')->get();
+        $userId = Auth::id();
+        $data = SuratPengadaan::with('details')->where('ID_Staf', $userId) ->get();
 
         return DataTables::of($data)
             ->addColumn('nama_barang', function($row){
@@ -203,10 +210,22 @@ class SuratPengadaanController extends Controller
 
     public function cetakSuratPengadaan($id)
     {
-        $surat = SuratPengadaan::with('details')->where('id_pengadaan', $id)->firstOrFail();
+        $surat = SuratPengadaan::with('details')->where('ID_pengadaan', $id)->firstOrFail();
         Carbon::setLocale('id');
 
+        // Ambil data user/staf berdasarkan ID_Staf
+        $staf = \App\Models\User::find($surat->ID_Staf);
+        $namaStaf =  $staf->name;
+
         Fpdf::AddPage();
+
+        // Tambahkan kop surat (gambar di bagian atas)
+        $kopPath = public_path('assets/img/logo_lib.png');
+        if (file_exists($kopPath)) {
+            Fpdf::Image($kopPath, 0, 10, 70);
+            Fpdf::Ln(25);
+        }
+
         Fpdf::SetFont('Times', '', 12);
         Fpdf::Cell(190, 7, 'Nomor : ' . $surat->no_surat, 0, 1, 'L');
         Fpdf::Cell(190, 7, 'Perihal : Permohonan Pengadaan Barang', 0, 1, 'L');
@@ -257,17 +276,33 @@ class SuratPengadaanController extends Controller
         Fpdf::Cell(190, 7, 'Hormat kami,', 0, 1, 'R');
         Fpdf::Ln(2);
 
-        // Tambahkan foto tanda tangan di sini
-        $fotoTtd = public_path('assets/img/tanda_tangan_staf.png');
-        if (file_exists($fotoTtd)) {
-            Fpdf::Image($fotoTtd, 170, Fpdf::GetY(), 30);
-            Fpdf::Ln(32);
+        // Generate QR Code
+        $urlDetail = route('surat.info', ['id' => $surat->ID_pengadaan]);
+
+        $result = Builder::create()
+            ->writer(new PngWriter())
+            ->data($urlDetail)
+            ->size(300)
+            ->margin(10)
+            ->build();
+
+        $qrDir = storage_path('app/public/qrcodes');
+        if (!file_exists($qrDir)) {
+            mkdir($qrDir, 0755, true);
         }
 
-        Fpdf::Cell(190, 7, 'Staf Gudang', 0, 1, 'R');
+        $qrPath = $qrDir . '/qrcode_' . $surat->ID_pengadaan . '.png';
+        file_put_contents($qrPath, $result->getString());
+
+        $currentY = Fpdf::GetY();
+        Fpdf::Image($qrPath, 170, $currentY, 30);
+        Fpdf::Ln(32);
+
+
+        Fpdf::Cell(190, 7, $namaStaf, 0, 1, 'R');
 
         if ($surat->lampiran) {
-            $lampiranFiles = json_decode($surat->lampiran, true); // decode ke array
+            $lampiranFiles = json_decode($surat->lampiran, true);
             if (is_array($lampiranFiles)) {
                 foreach ($lampiranFiles as $index => $filename) {
                     $lampiranPath = storage_path('app/public/lampiran_foto/SURAT' . $surat->ID_pengadaan . '/' . $filename);
@@ -278,7 +313,7 @@ class SuratPengadaanController extends Controller
                         Fpdf::Ln(5);
 
                         list($width, $height) = getimagesize($lampiranPath);
-                        $pageWidth = 210 - 20; // margin 10 mm kiri kanan, A4 width = 210 mm
+                        $pageWidth = 210 - 20;
                         $ratio = $width / $height;
                         $imgWidth = $pageWidth;
                         $imgHeight = $imgWidth / $ratio;
@@ -291,5 +326,14 @@ class SuratPengadaanController extends Controller
 
         $filename = 'Surat-Pengadaan-' . $surat->no_surat . '.pdf';
         Fpdf::Output('I', $filename);
+    }
+
+    public function infoSurat($id)
+    {
+        $surat = SuratPengadaan::where('ID_pengadaan', $id)->firstOrFail();
+        $staf = \App\Models\User::find($surat->ID_Staf);
+        $namaStaf =  $staf->name;
+
+        return view('staf.details.info_surat', compact('surat', 'namaStaf'));
     }
 }

@@ -13,7 +13,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
-
 {
     // Total pemasukan dan pengeluaran anggaran user
     public function anggaran()
@@ -29,33 +28,34 @@ class DashboardController extends Controller
             'pengeluaran' => $pengeluaran,
             'sisa_anggaran' => $sisaanggaran
         ];
-
     }
+
     // Fungsi untuk dapatkan data status (bukan return view)
     public function statusOverview()
     {
+        $userId = Auth::id(); // ✅ Tambahkan filter berdasarkan user login
+
         $pengambilanStatuses = [
-            'Diproses' => SuratPengambilan::where('status', 'Diproses')->count(),
-            'Disetujui' => SuratPengambilan::where('status', 'Disetujui')->count(),
-            'Ditolak' => SuratPengambilan::where('status', 'Ditolak')->count(),
-            'Selesai' => SuratPengambilan::where('status', 'Selesai')->count(),
+            'Diproses' => SuratPengambilan::where('ID_Staf', $userId)->where('status', 'Diproses')->count(), // ✅
+            'Disetujui' => SuratPengambilan::where('ID_Staf', $userId)->where('status', 'Disetujui')->count(), // ✅
+            'Ditolak' => SuratPengambilan::where('ID_Staf', $userId)->where('status', 'Ditolak')->count(), // ✅
+            'Selesai' => SuratPengambilan::where('ID_Staf', $userId)->where('status', 'Selesai')->count(), // ✅
         ];
 
         $pengadaanStatuses = [
-            'Diproses' => SuratPengadaan::where('status', 'Diproses')->count(),
-            'Disetujui' => SuratPengadaan::where('status', 'Disetujui')->count(),
-            'Ditolak' => SuratPengadaan::where('status', 'Ditolak')->count(),
-            'Selesai' => SuratPengadaan::where('status', 'Selesai')->count(),
+            'Diproses' => SuratPengadaan::where('ID_Staf', $userId)->where('status', 'Diproses')->count(), // ✅
+            'Disetujui' => SuratPengadaan::where('ID_Staf', $userId)->where('status', 'Disetujui')->count(), // ✅
+            'Ditolak' => SuratPengadaan::where('ID_Staf', $userId)->where('status', 'Ditolak')->count(), // ✅
+            'Selesai' => SuratPengadaan::where('ID_Staf', $userId)->where('status', 'Selesai')->count(), // ✅
         ];
 
         $pengadaanMendesakStatuses = [
-            'Diproses' => EmailPengadaanMendesak::where('status', 'Diproses')->count(),
-            'Disetujui' => EmailPengadaanMendesak::where('status', 'Disetujui')->count(),
-            'Ditolak' => EmailPengadaanMendesak::where('status', 'Ditolak')->count(),
-            'Selesai' => EmailPengadaanMendesak::where('status', 'Selesai')->count(),
+            'Diproses' => EmailPengadaanMendesak::where('ID_Staf', $userId)->where('status', 'Diproses')->count(), // ✅
+            'Disetujui' => EmailPengadaanMendesak::where('ID_Staf', $userId)->where('status', 'Disetujui')->count(), // ✅
+            'Ditolak' => EmailPengadaanMendesak::where('ID_Staf', $userId)->where('status', 'Ditolak')->count(), // ✅
+            'Selesai' => EmailPengadaanMendesak::where('ID_Staf', $userId)->where('status', 'Selesai')->count(), // ✅
         ];
 
-        // Total per status
         $counts = [
             'Diproses' => $pengambilanStatuses['Diproses'] + $pengadaanStatuses['Diproses'] + $pengadaanMendesakStatuses['Diproses'],
             'Disetujui' => $pengambilanStatuses['Disetujui'] + $pengadaanStatuses['Disetujui'] + $pengadaanMendesakStatuses['Disetujui'],
@@ -79,10 +79,10 @@ class DashboardController extends Controller
         ];
     }
 
-
     // Fungsi utama yang dipanggil route, kumpulin semua data & kirim ke view
     public function index()
     {
+        $userId = Auth::id(); // ✅ Ambil ID user login
         $statuses = $this->statusOverview();
         $anggaran = $this->anggaran();
 
@@ -106,19 +106,19 @@ class DashboardController extends Controller
         $barangLastWeek = BarangTersedia::whereBetween('created_at', [$startLastWeek, $endLastWeek])->count();
         $barangPercentage = $calculatePercentage($barangThisWeek, $barangLastWeek);
 
-        $totalPengambilan = SuratPengambilan::count();
-        $ambilThisWeek = SuratPengambilan::whereBetween('created_at', [$startThisWeek, $endThisWeek])->count();
-        $ambilLastWeek = SuratPengambilan::whereBetween('created_at', [$startLastWeek, $endLastWeek])->count();
+        $totalPengambilan = SuratPengambilan::where('ID_Staf', $userId)->count(); // ✅
+        $ambilThisWeek = SuratPengambilan::where('ID_Staf', $userId)->whereBetween('created_at', [$startThisWeek, $endThisWeek])->count(); // ✅
+        $ambilLastWeek = SuratPengambilan::where('ID_Staf', $userId)->whereBetween('created_at', [$startLastWeek, $endLastWeek])->count(); // ✅
         $ambilPercentage = $calculatePercentage($ambilThisWeek, $ambilLastWeek);
 
-        $totalPengadaan = SuratPengadaan::count();
-        $pengadaanThisWeek = SuratPengadaan::whereBetween('created_at', [$startThisWeek, $endThisWeek])->count();
-        $pengadaanLastWeek = SuratPengadaan::whereBetween('created_at', [$startLastWeek, $endLastWeek])->count();
+        $totalPengadaan = SuratPengadaan::where('ID_Staf', $userId)->count(); // ✅
+        $pengadaanThisWeek = SuratPengadaan::where('ID_Staf', $userId)->whereBetween('created_at', [$startThisWeek, $endThisWeek])->count(); // ✅
+        $pengadaanLastWeek = SuratPengadaan::where('ID_Staf', $userId)->whereBetween('created_at', [$startLastWeek, $endLastWeek])->count(); // ✅
         $pengadaanPercentage = $calculatePercentage($pengadaanThisWeek, $pengadaanLastWeek);
 
-        $totalPengadaanMendesak = EmailPengadaanMendesak::count();
-        $pmThisWeek = EmailPengadaanMendesak::whereBetween('created_at', [$startThisWeek, $endThisWeek])->count();
-        $pmLastWeek = EmailPengadaanMendesak::whereBetween('created_at', [$startLastWeek, $endLastWeek])->count();
+        $totalPengadaanMendesak = EmailPengadaanMendesak::where('ID_Staf', $userId)->count(); // ✅
+        $pmThisWeek = EmailPengadaanMendesak::where('ID_Staf', $userId)->whereBetween('created_at', [$startThisWeek, $endThisWeek])->count(); // ✅
+        $pmLastWeek = EmailPengadaanMendesak::where('ID_Staf', $userId)->whereBetween('created_at', [$startLastWeek, $endLastWeek])->count(); // ✅
         $pmPercentage = $calculatePercentage($pmThisWeek, $pmLastWeek);
 
         return view('staf.dashboard', [
@@ -126,25 +126,24 @@ class DashboardController extends Controller
             'statuses' => $statuses,
             'barang' => $totalBarang,
             'barangInfo' => [
-                'persen' => $barangPercentage,
+                'persen' => abs($barangPercentage),
                 'naik' => $barangThisWeek >= $barangLastWeek,
             ],
             'pengambilan' => $totalPengambilan,
             'pengambilanInfo' => [
-                'persen' => $ambilPercentage,
+                'persen' => abs($ambilPercentage),
                 'naik' => $ambilThisWeek >= $ambilLastWeek,
             ],
             'pengadaan' => $totalPengadaan,
             'pengadaanInfo' => [
-                'persen' => $pengadaanPercentage,
+                'persen' => abs($pengadaanPercentage),
                 'naik' => $pengadaanThisWeek >= $pengadaanLastWeek,
             ],
             'pengadaanMendesak' => $totalPengadaanMendesak,
             'pengadaanMendesakInfo' => [
-                'persen' => $pmPercentage,
+                'persen' => abs($pmPercentage),
                 'naik' => $pmThisWeek >= $pmLastWeek,
             ],
         ]);
     }
 }
-

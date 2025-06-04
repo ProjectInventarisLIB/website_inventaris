@@ -43,11 +43,13 @@ class EmailPengadaanMendesakController extends Controller
     {
         $idPengadaan = $this->generateIdPengadaan();
 
+        $userId = Auth::id(); // Ambil ID user yang login
+
         $statusCounts = [
-            'Diproses' => EmailPengadaanMendesak::where('status', 'Diproses')->count(),
-            'Disetujui' => EmailPengadaanMendesak::where('status', 'Disetujui')->count(),
-            'Selesai'  => EmailPengadaanMendesak::where('status', 'Selesai')->count(),
-            'Ditolak'  => EmailPengadaanMendesak::where('status', 'Ditolak')->count(),
+            'Diproses' => EmailPengadaanMendesak::where('ID_Staf', $userId)->where('status', 'Diproses')->count(),
+            'Disetujui' => EmailPengadaanMendesak::where('ID_Staf', $userId)->where('status', 'Disetujui')->count(),
+            'Selesai'  => EmailPengadaanMendesak::where('ID_Staf', $userId)->where('status', 'Selesai')->count(),
+            'Ditolak'  => EmailPengadaanMendesak::where('ID_Staf', $userId)->where('status', 'Ditolak')->count(),
         ];
 
         return view('staf.email_pengadaan_mendesak', compact( 'idPengadaan', 'statusCounts'));
@@ -128,7 +130,8 @@ class EmailPengadaanMendesakController extends Controller
 
     public function show(Request $request)
     {
-        $data = EmailPengadaanMendesak::with('details')->get();
+        $userId = Auth::id();
+        $data = EmailPengadaanMendesak::with('details')->where('ID_Staf', $userId)->get();
 
         return DataTables::of($data)
             ->addColumn('nama_barang', function($row){

@@ -95,21 +95,7 @@
             <div class="card-title mb-0">
                 <h5 class="m-0 me-2">Status Seluruh Permohonan</h5>
             </div>
-        <div class="dropdown">
-            <button
-                class="btn btn-text-secondary rounded-pill p-2 border-0 me-n1"
-                type="button"
-                id="vehiclesOverview"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false">
-                <i class="icon-base ti tabler-dots-vertical icon-md text-body-secondary"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="vehiclesOverview">
-                <a class="dropdown-item" href="javascript:void(0);">Unduh Laporkan</a>
-            </div>
         </div>
-    </div>
     <div class="card-body">
         <div class="d-none d-lg-flex vehicles-progress-labels mb-6">
             <div class="vehicles-progress-label on-the-way-text text-center" style="width: 25%;">Diproses</div>
@@ -122,7 +108,7 @@
             style="height: 46px"
             >
             <div
-                class="progress-bar fw-medium text-start shadow-none bg-lighter text-heading px-4 rounded-0"
+                class="progress-bar fw-medium text-start shadow-none bg-warning text-paper px-4 rounded-0"
                 role="progressbar"
                 style="width: 25%"
             >
@@ -130,7 +116,7 @@
             </div>
 
             <div
-                class="progress-bar fw-medium text-start shadow-none bg-primary px-4"
+                class="progress-bar fw-medium text-start shadow-none bg-success px-4"
                 role="progressbar"
                 style="width: 25%"
             >
@@ -138,7 +124,7 @@
             </div>
 
             <div
-                class="progress-bar fw-medium text-start shadow-none text-bg-info px-2 px-sm-4"
+                class="progress-bar fw-medium text-start shadow-none bg-maroon px-2 px-sm-4"
                 role="progressbar"
                 style="width: 25%"
             >
@@ -146,7 +132,7 @@
             </div>
 
             <div
-                class="progress-bar bg-dark fw-medium text-start shadow-none snackbar text-paper px-1 px-sm-3 rounded-0 px-lg-4"
+                class="progress-bar bg-light fw-medium text-start shadow-none snackbar text-heading px-1 px-sm-3 rounded-0 px-lg-4"
                 role="progressbar"
                 style="width: 25%"
             >
@@ -224,27 +210,13 @@
             <div class="card-title mb-0">
                 <h5 class="m-0 me-2">Anggaran {{ Auth::user()->name }}</h5>
             </div>
-            <div class="dropdown">
-                <button
-                    class="btn btn-text-secondary rounded-pill p-2 me-n1"
-                    type="button"
-                    id="deliveryExceptions"
-                    data-bs-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false">
-                    <i class="icon-base ti tabler-dots-vertical icon-md text-body-secondary"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="deliveryExceptions">
-                    <a class="dropdown-item" href="javascript:void(0);">Unduh Data</a>
-                </div>
-            </div>
         </div>
         <div class="card-body">
         <div id="deliveryExceptionsChart"></div>
         </div>
     </div>
     </div>
-    </div>
+</div>
 
 
 <script>
