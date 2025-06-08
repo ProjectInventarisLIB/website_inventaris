@@ -7,6 +7,6 @@
 - **Password**: `123`
 
 ### 2. **Staf**
-- **Email**: `contohstaff12345@gmail.com`  
-- **Password**: `123`  
+- **Email**: `contohstaff12345@gmail.com`
   *(Email asli, password: contohstaff12345)*
+- **Password**: `123`  
