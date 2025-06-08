@@ -6,11 +6,6 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    public function view()
-    {
-        return view("login");
-    }
-
     public function logout(Request $request)
     {
         Auth::logout();
@@ -20,30 +15,33 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
         $request->validate([
             'email' => 'required',
             'password' => 'required'
         ]);
 
-        $infologin= [
-        'email'=> $request->email,
-        'password'=> $request->password,
+        $infologin = [
+            'email' => $request->email,
+            'password' => $request->password,
         ];
 
         if (Auth::attempt($infologin)) {
-            // if (Auth::User()->role == 'staf') {
-            //     // return redirect ('/admin);
-            // } elseif(Auth::User()->role == 'staf') {
-            //     // return redirect ('/admin);
-            // }
-            return redirect ('/halaman_dashboard');
-            // echo 'sukses';exit(); // hanya untuk debug, jangan lupa hapus kalau sudah tidak perlu
+            $user = Auth::user();
+
+            if ($user->role === 'staf') {
+                return redirect()->route('halaman_dashboard');
+            } elseif ($user->role === 'staf_gudang') {
+                return redirect()->route('dashboard_admin');
+            } else {
+                Auth::logout();
+                return redirect('/')->withErrors(['login' => 'Role tidak dikenali.']);
+            }
         } else {
             return redirect()->back()
                 ->withErrors(['login' => 'Email atau password tidak sesuai'])
                 ->withInput();
         }
     }
-
 }

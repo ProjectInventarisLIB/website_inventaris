@@ -1,0 +1,94 @@
+{
+  "data": [
+    {
+      "kode": "BRG-01",
+      "nama": "Kertas A4",
+      "ukuran": "210x297mm",
+      "satuan": "Rim",
+      "jumlah": 10,
+      "tanggal": "2025-06-08",
+      "harga": 50000
+    },
+    {
+      "kode": "BRG-02",
+      "nama": "Pulpen",
+      "ukuran": "-",
+      "satuan": "Pack",
+      "jumlah": 5,
+      "tanggal": "2025-06-08",
+      "harga": 25000
+    },
+    {
+      "kode": "BRG-03",
+      "nama": "Buku Catatan",
+      "ukuran": "A5",
+      "satuan": "Buah",
+      "jumlah": 15,
+      "tanggal": "2025-06-08",
+      "harga": 15000
+    },
+    {
+      "kode": "BRG-04",
+      "nama": "Spidol Board Marker",
+      "ukuran": "-",
+      "satuan": "Set",
+      "jumlah": 3,
+      "tanggal": "2025-06-08",
+      "harga": 30000
+    },
+    {
+      "kode": "BRG-05",
+      "nama": "Amplop Coklat",
+      "ukuran": "F4",
+      "satuan": "Pack",
+      "jumlah": 7,
+      "tanggal": "2025-06-08",
+      "harga": 35000
+    },
+    {
+      "kode": "BRG-06",
+      "nama": "Map Snelhecter",
+      "ukuran": "A4",
+      "satuan": "Lusin",
+      "jumlah": 2,
+      "tanggal": "2025-06-08",
+      "harga": 20000
+    },
+    {
+      "kode": "BRG-07",
+      "nama": "Tinta Printer",
+      "ukuran": "100ml",
+      "satuan": "Botol",
+      "jumlah": 4,
+      "tanggal": "2025-06-08",
+      "harga": 75000
+    },
+    {
+      "kode": "BRG-08",
+      "nama": "Stabilo",
+      "ukuran": "-",
+      "satuan": "Pack",
+      "jumlah": 6,
+      "tanggal": "2025-06-08",
+      "harga": 18000
+    },
+    {
+      "kode": "BRG-09",
+      "nama": "Penggaris Besi",
+      "ukuran": "30cm",
+      "satuan": "Buah",
+      "jumlah": 8,
+      "tanggal": "2025-06-08",
+      "harga": 12000
+    },
+    {
+      "kode": "BRG-10",
+      "nama": "Lakban Bening",
+      "ukuran": "2 inch",
+      "satuan": "Roll",
+      "jumlah": 12,
+      "tanggal": "2025-06-08",
+      "harga": 10000
+    }
+  ]
+}

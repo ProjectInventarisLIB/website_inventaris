@@ -27,8 +27,6 @@
 
     <link rel="stylesheet" href="../../assets/vendor/fonts/iconify-icons.css" />
 
-    <link rel="stylesheet" href="../../assets/vendor/libs/spinkit/spinkit.css" />
-
     <link rel="stylesheet" href="../../assets/vendor/libs/node-waves/node-waves.css" />
 
     <link rel="stylesheet" href="../../assets/vendor/css/core.css" />
@@ -72,7 +70,7 @@
         <div class="layout-container">
             <!-- Menu -->
 
-            @include ('staf.layouts.sidebar')
+            @include ('admin.layouts.sidebar')
 
             <div class="menu-mobile-toggler d-xl-none rounded-1">
                 <a href="javascript:void(0);"
@@ -84,14 +82,14 @@
             <div class="layout-page">
 
 
-                @include('staf.layouts.navbar')
+                @include('admin.layouts.navbar')
 
                 <div class="content-wrapper">
                     <div class="container-xxl flex-grow-1 container-p-y">
                         @yield('content')
                     </div>
 
-                    @include ('staf.layouts.footer')
+                    @include ('admin.layouts.footer')
 
                     <div class="content-backdrop fade"></div>
                 </div>
@@ -144,8 +142,12 @@
     <script src="../../assets/vendor/libs/@form-validation/bootstrap5.js"></script>
     <script src="../../assets/vendor/libs/@form-validation/auto-focus.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/notiflix@3.2.8/dist/notiflix-aio-3.2.8.min.js"></script>
-    <!-- Select 2 -->
-    @stack('scripts')
+
+
+    <script src="../../assets/js/app-logistics-dashboard.js"></script>
+    <script src="../../assets/js/cards-advance.js"></script>
+    <script src="../../assets/js/cards-statistics.js"></script>
+    {{-- <script src="../../assets/js/app-user-list.js"></script> --}}
 
 </body>
 

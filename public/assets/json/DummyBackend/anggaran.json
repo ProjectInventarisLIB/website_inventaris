@@ -1,0 +1,60 @@
+{
+  "data": [
+    {
+      "id": "STF-01",
+      "nama": "Staf IT",
+      "email": "stafit@gmail.com",
+      "periode": "2025",
+      "pemasukan": "20000000",
+      "pengeluaran": "1000000"
+    },
+    {
+        "id": "STF-02",
+        "nama": "Staf Keuangan",
+        "email": "keuangan@gmail.com",
+        "periode": "2025",
+        "pemasukan": "25000000",
+        "pengeluaran": "5000000"
+    },
+    {
+        "id": "STF-03",
+        "nama": "Staf Operasional",
+        "email": "operasional@gmail.com",
+        "periode": "2025",
+        "pemasukan": "18000000",
+        "pengeluaran": "3000000"
+    },
+    {
+        "id": "STF-04",
+        "nama": "Staf Marketing",
+        "email": "marketing@gmail.com",
+        "periode": "2025",
+        "pemasukan": "22000000",
+        "pengeluaran": "2500000"
+    },
+    {
+        "id": "STF-05",
+        "nama": "Staf HRD",
+        "email": "hrd@gmail.com",
+        "periode": "2025",
+        "pemasukan": "21000000",
+        "pengeluaran": "4000000"
+    },
+    {
+        "id": "STF-06",
+        "nama": "Staf Administrasi",
+        "email": "admin@gmail.com",
+        "periode": "2025",
+        "pemasukan": "19000000",
+        "pengeluaran": "1500000"
+    },
+    {
+        "id": "STF-07",
+        "nama": "Staf Logistik",
+        "email": "logistik@gmail.com",
+        "periode": "2025",
+        "pemasukan": "23000000",
+        "pengeluaran": "3500000"
+    }
+  ]
+}

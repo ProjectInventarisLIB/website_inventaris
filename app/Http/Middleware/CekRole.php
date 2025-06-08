@@ -8,9 +8,9 @@ use Illuminate\Http\Response;
 
 class CekRole
 {
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, ...$roles)
     {
-        if (!auth()->check() || auth()->user()->role !== 'staf') {
+        if (!auth()->check() || !in_array(auth()->user()->role, $roles)) {
             return redirect('/');
         }
 
