@@ -1,0 +1,84 @@
+{
+  "data": [
+    {
+      "tanggal-no": "23/02/2025-01",
+      "nama_vendor": "PT Ulir Presisi",
+      "barang": "Kayu Jati",
+      "tgl": "24/02/2025",
+      "total": "2000000",
+      "status": "Diproses"
+    },
+    {
+      "tanggal-no": "24/02/2025-02",
+      "nama_vendor": "CV Logam Mulia",
+      "barang": "Besi Beton",
+      "tgl": "25/02/2025",
+      "total": "3500000",
+      "status": "Diterima"
+    },
+    {
+      "tanggal-no": "25/02/2025-03",
+      "nama_vendor": "PT Cahaya Bangunan",
+      "barang": "Semen 50kg",
+      "tgl": "26/02/2025",
+      "total": "1500000",
+      "status": "Diproses"
+    },
+    {
+      "tanggal-no": "26/02/2025-04",
+      "nama_vendor": "CV Kaca Nusantara",
+      "barang": "Kaca Tempered",
+      "tgl": "27/02/2025",
+      "total": "5000000",
+      "status": "Dibatalkan"
+    },
+    {
+      "tanggal-no": "27/02/2025-05",
+      "nama_vendor": "PT Elektrik Solusi",
+      "barang": "Kabel Listrik",
+      "tgl": "28/02/2025",
+      "total": "1800000",
+      "status": "Diterima"
+    },
+    {
+      "tanggal-no": "28/02/2025-06",
+      "nama_vendor": "CV Bina Keramik",
+      "barang": "Keramik Lantai",
+      "tgl": "01/03/2025",
+      "total": "2500000",
+      "status": "Diproses"
+    },
+    {
+      "tanggal-no": "01/03/2025-07",
+      "nama_vendor": "PT Warna Abadi",
+      "barang": "Cat Tembok",
+      "tgl": "02/03/2025",
+      "total": "1200000",
+      "status": "Diproses"
+    },
+    {
+      "tanggal-no": "02/03/2025-08",
+      "nama_vendor": "CV Baja Prima",
+      "barang": "Plat Baja",
+      "tgl": "03/03/2025",
+      "total": "4800000",
+      "status": "Diterima"
+    },
+    {
+      "tanggal-no": "03/03/2025-09",
+      "nama_vendor": "PT Interior Modern",
+      "barang": "Panel Dinding",
+      "tgl": "04/03/2025",
+      "total": "3000000",
+      "status": "Dibatalkan"
+    },
+    {
+      "tanggal-no": "04/03/2025-10",
+      "nama_vendor": "CV Furnitur Nusantara",
+      "barang": "Meja Kantor",
+      "tgl": "05/03/2025",
+      "total": "4200000",
+      "status": "Diproses"
+    }
+  ]
+}

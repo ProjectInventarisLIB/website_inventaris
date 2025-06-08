@@ -1,0 +1,84 @@
+{
+  "data": [
+    {
+      "id": "VNDR-01",
+      "nama": "PT Ulir Presisi",
+      "alamat": "Jl. Industri No. 10, Jakarta",
+      "no_telp": "081234567890",
+      "email": "info@ulirpresisi.co.id",
+      "kategori": "Toko Bangunan"
+    },
+    {
+      "id": "VNDR-02",
+      "nama": "PT Baja Makmur",
+      "alamat": "Jl. Baja Raya No. 22, Surabaya",
+      "no_telp": "082345678901",
+      "email": "contact@bajamakmur.com",
+      "kategori": "Toko Besi"
+    },
+    {
+      "id": "VNDR-03",
+      "nama": "CV Teknik Kuat",
+      "alamat": "Jl. Teknik 45, Bandung",
+      "no_telp": "085612345678",
+      "email": "admin@teknikkuat.id",
+      "kategori": "Distributor Alat Teknik"
+    },
+    {
+      "id": "VNDR-04",
+      "nama": "PT Presisi Logam",
+      "alamat": "Jl. Logam No. 5, Medan",
+      "no_telp": "087812345612",
+      "email": "sales@presisilogam.co.id",
+      "kategori": "Toko Bangunan"
+    },
+    {
+      "id": "VNDR-05",
+      "nama": "CV Cipta Karya",
+      "alamat": "Jl. Cipta No. 88, Semarang",
+      "no_telp": "083456789012",
+      "email": "support@ciptakarya.com",
+      "kategori": "Toko Alat Tulis"
+    },
+    {
+      "id": "VNDR-06",
+      "nama": "PT Trimitra Besi",
+      "alamat": "Jl. Trimitra No. 12, Makassar",
+      "no_telp": "089911223344",
+      "email": "marketing@trimitrabesi.id",
+      "kategori": "Distributor Besi"
+    },
+    {
+      "id": "VNDR-07",
+      "nama": "PT Baja Abadi",
+      "alamat": "Jl. Abadi No. 9, Balikpapan",
+      "no_telp": "081222334455",
+      "email": "info@bajaabadi.co.id",
+      "kategori": "Toko Bangunan"
+    },
+    {
+      "id": "VNDR-08",
+      "nama": "CV Roda Teknik",
+      "alamat": "Jl. Roda No. 19, Yogyakarta",
+      "no_telp": "082233445566",
+      "email": "order@rodateknik.id",
+      "kategori": "Toko Peralatan Mesin"
+    },
+    {
+      "id": "VNDR-09",
+      "nama": "PT Sumber Logistik",
+      "alamat": "Jl. Sumber No. 7, Malang",
+      "no_telp": "083344556677",
+      "email": "logistik@sumber.co.id",
+      "kategori": "Distributor Umum"
+    },
+    {
+      "id": "VNDR-10",
+      "nama": "PT Karya Besi Nusantara",
+      "alamat": "Jl. Nusantara No. 3, Palembang",
+      "no_telp": "084455667788",
+      "email": "info@karyabesi.co.id",
+      "kategori": "Toko Besi"
+    }
+  ]
+}

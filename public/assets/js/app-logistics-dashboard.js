@@ -34,12 +34,12 @@ document.addEventListener('DOMContentLoaded', function (e) {
     shipmentConfig = {
       series: [
         {
-          name: 'Shipment',
+          name: 'Barang Masuk',
           type: 'column',
           data: [38, 45, 33, 38, 32, 50, 48, 40, 42, 37]
         },
         {
-          name: 'Delivery',
+          name: 'Barang Keluar',
           type: 'line',
           data: [23, 28, 23, 32, 28, 44, 32, 38, 26, 34]
         }

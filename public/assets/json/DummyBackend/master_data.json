@@ -1,0 +1,54 @@
+{
+  "data": [
+    {
+      "kode": "MSTRBRG-01",
+      "nama": "Baut Besi Ulir Presisi",
+      "ukuran": "Diameter 2 mm"
+    },
+    {
+      "kode": "MSTRBRG-02",
+      "nama": "Mur Pengunci Baja",
+      "ukuran": "Diameter 2 mm"
+    },
+    {
+      "kode": "MSTRBRG-03",
+      "nama": "Obeng Plus Pegangan Karet",
+      "ukuran": "Panjang 15 cm"
+    },
+    {
+      "kode": "MSTRBRG-04",
+      "nama": "Paku Baja Tahan Karat",
+      "ukuran": "Panjang 5 cm"
+    },
+    {
+      "kode": "MSTRBRG-05",
+      "nama": "Tang Kombinasi Serbaguna",
+      "ukuran": "Panjang 20 cm"
+    },
+    {
+      "kode": "MSTRBRG-06",
+      "nama": "Kunci Inggris Adjustable",
+      "ukuran": "Panjang 25 cm"
+    },
+    {
+      "kode": "MSTRBRG-07",
+      "nama": "Bor Listrik Portable",
+      "ukuran": "Daya 500 Watt"
+    },
+    {
+      "kode": "MSTRBRG-08",
+      "nama": "Meteran Gulung Otomatis",
+      "ukuran": "Panjang 3 Meter"
+    },
+    {
+      "kode": "MSTRBRG-09",
+      "nama": "Palu Tukang Kayu",
+      "ukuran": "Berat 1 Kg"
+    },
+    {
+      "kode": "MSTRBRG-10",
+      "nama": "Gergaji Besi Tajam",
+      "ukuran": "Panjang 30 cm"
+    }
+  ]
+}

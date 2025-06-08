@@ -28,10 +28,20 @@ class DummyUserSeeder extends Seeder
                 'role' => 'staf',
                 'password' => bcrypt('1234')
 
+            ],
+            [
+                'name' => 'Admin SCM',
+                'email' => 'admin@gmail.com',
+                'role' => 'staf_gudang',
+                'password' => bcrypt('123')
+
             ]
         ];
-        foreach($userData as  $key => $val){
-            User::create($val);
+        foreach ($userData as $val) {
+            User::updateOrCreate(
+                ['email' => $val['email']],
+                $val
+            );
         }
     }
 }
